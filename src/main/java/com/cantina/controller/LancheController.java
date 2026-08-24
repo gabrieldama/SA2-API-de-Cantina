@@ -30,7 +30,7 @@ public class LancheController {
         this.lancheService = lancheService;
     }
 
-    @Operation(summary = "Cadastrar um lanche", description = "Cadastra u novo lanche no cardapio da cantina.")
+    @Operation(summary = "Cadastrar um lanche", description = "Cadastra um novo lanche no cardápio da cantina.")
     @PostMapping
     public ResponseEntity<LancheResponseDTO> cadastrarLanche(@RequestBody @Valid LancheRequestDTO dto,
                                                              UriComponentsBuilder uriBuilder) {
@@ -39,19 +39,19 @@ public class LancheController {
         return ResponseEntity.created(uri).body(lancheCriado);
     }
 
-    @Operation(summary = "Listar todos os lanches", description = "Retorna nome e preço de todos os lanches cadastrados.")
+    @Operation(summary = "Listar todos os lanches", description = "Lista nome e preço de todos os lanches cadastrados.")
     @GetMapping
     public ResponseEntity<List<LancheResumoDTO>> listarLanches() {
         return ResponseEntity.ok(lancheService.listarTodos());
     }
 
-    @Operation(summary = "Consultar um lanche", description = "Retorna todas as informações de um lanche pelo id.")
+    @Operation(summary = "Consultar um lanche", description = "Retorna todas as informações de um lanche pelo ID.")
     @GetMapping("/{id}")
     public ResponseEntity<LancheResponseDTO> consultarLanchePorId(@PathVariable Long id) {
         return ResponseEntity.ok(lancheService.buscarPorId(id));
     }
 
-    @Operation(summary = "Atualizar um lanche", description = "Atualiza os dados de um lanche ja cadastrado.")
+    @Operation(summary = "Atualizar um lanche", description = "Atualiza os dados de um lanche já cadastrado.")
     @PutMapping("/{id}")
     public ResponseEntity<LancheResponseDTO> atualizarLanche(@PathVariable Long id,
                                                              @RequestBody @Valid LancheRequestDTO dto) {
